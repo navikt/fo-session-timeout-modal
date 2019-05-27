@@ -1,1 +1,1 @@
-declare module 'fo-session-timeout-modal';
+declare module '@navikt/fo-session-timeout-modal';
