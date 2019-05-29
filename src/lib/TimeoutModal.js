@@ -112,7 +112,7 @@ class TimeoutModal extends React.Component {
                     kompakt={true}
                 >
                     <div className="timeoutbox-nedtelling">
-                        <Systemtittel className="timeoutbox-modal__beskrivelse">
+                        <Systemtittel className="timeoutbox-modal__tittel">
                             Sesjonen din har utløpt
                         </Systemtittel>
                         <Normaltekst className="timeoutbox-modal__beskrivelse">
