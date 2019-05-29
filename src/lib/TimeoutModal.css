@@ -10,9 +10,12 @@
     outline: none;
 }
 
+.timeoutbox-modal__tittel {
+    margin-bottom: 0.5rem;
+}
 .timeoutbox-modal__beskrivelse {
     text-align: center;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 2rem auto;
 }
 
 .timeoutbox-modal .nav-veileder__frame {
