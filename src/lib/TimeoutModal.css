@@ -10,10 +10,10 @@
     outline: none;
 }
 
-.timeoutbox-modal__tittel {
+.timeoutbox-modal .timeoutbox-modal__tittel {
     margin-bottom: 0.5rem;
 }
-.timeoutbox-modal__beskrivelse {
+.timeoutbox-modal .timeoutbox-modal__beskrivelse {
     text-align: center;
     margin: 0 auto 2rem auto;
 }
