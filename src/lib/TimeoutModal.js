@@ -30,10 +30,25 @@ class TimeoutModal extends React.Component {
         console.log('props', props); // tslint:disable-line
         this.state = {
             skalVise: false,
+            timeOffset: 0
         };
     }
 
     componentDidMount() {
+        fetch('https://worldtimeapi.org/api/ip')
+        .then(response => {
+            return response.json();
+        }).then(data => {
+            const nowlocal = new Date().getTime();
+            const nowreal = new Date(data.datetime).getTime();
+            const offset = nowlocal - nowreal;
+            this.setState({
+                timeOffset: offset
+            });
+        })
+        .catch(error => {
+            console.error(error); // tslint:disable-line
+        })
         fetch(
             '/api/auth',
             {
@@ -48,7 +63,6 @@ class TimeoutModal extends React.Component {
 
                 if (expirationTime) {
                     const expirationInMillis = this.utloptTispunktMinusFemMinutter(expirationTime);
-
                     // SetTimeout til å vise informasjon melding når sesjon er utløpt
                     setTimeout(() => {
                         this.setState({
@@ -64,6 +78,7 @@ class TimeoutModal extends React.Component {
                         const nyExpirationInMillis = this.utloptTispunktMinusFemMinutter(expirationTime);
                         this.setState({
                             skalVise: nyExpirationInMillis < 0,
+                            timeOffset: 0
                         });
                     });
                 }
@@ -82,7 +97,6 @@ class TimeoutModal extends React.Component {
 
     render() {
         const skalVise = this.state.skalVise || this.props.visDemo;
-
         return (
             <NavFrontendModal
                 isOpen={skalVise}
@@ -116,7 +130,7 @@ class TimeoutModal extends React.Component {
                             Sesjonen din har utløpt
                         </Systemtittel>
                         <Normaltekst className="timeoutbox-modal__beskrivelse">
-                            Du må starte på nytt for å fortsette.
+                            {this.state.timeOffset > 300000 ? 'Klokken på datamaskinen din er feil. Du må stille den før du trykker "Start på nytt"' : 'Du må starte på nytt for å fortsette.'}
                         </Normaltekst>
                         <HovedKnapp
                             className="timeoutbox-modal__knapp"
@@ -135,4 +149,4 @@ class TimeoutModal extends React.Component {
     }
 }
 
-export default TimeoutModal
+export default TimeoutModal;
