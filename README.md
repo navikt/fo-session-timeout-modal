@@ -1,8 +1,6 @@
 ## Informasjonsmelding når sesjon utløper
 
-Brukes i NAV FO frontend applikasjoner for å vise informasjonsmelding når sesjon utløper.
-
-Dersom klokken på klienten er feil vil informasjonsmeldingen gi beskjed om at klokken må stilles før ny sesjon startes.
+Brukes i NAV FO frontend applikasjoner for å vise informasjonsmelding 5 minutter før sesjon utløper.
 
 ### Installering
 
@@ -18,7 +16,7 @@ Dersom klokken på klienten er feil vil informasjonsmeldingen gi beskjed om at k
 
 ### Funksjonalitet
 
-Komponenten vil gjør fetch kall mot /api/auth og et kall mot https://worldtimeapi.org/api/ip for å sjekken klokken på klienten.
+Komponenten gjør et fetch kall mot /api/auth og sjekker `remainingSeconds`.
 
 "Bilde console log"
 
@@ -26,6 +24,10 @@ Komponenten vil gjør fetch kall mot /api/auth og et kall mot https://worldtimea
 
 `npm start`
 
-### Lisens
+# Henvendelser
 
-[MIT](LICENSE)
+Spørsmål knyttet til koden eller prosjektet kan stilles via issues her på github.
+
+# For NAV-ansatte
+
+Interne henvendelser kan sendes via Slack i kanalen #område-arbeid-pilot
