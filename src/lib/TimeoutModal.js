@@ -2,12 +2,11 @@ import React from 'react';
 import NavFrontendModal from 'nav-frontend-modal';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import HovedKnapp from 'nav-frontend-knapper/lib/hovedknapp';
-import {Normaltekst, Systemtittel} from 'nav-frontend-typografi';
-import moment from 'moment';
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import './TimeoutModal.css';
 
 export const getCookie = name => {
-    const re = new RegExp(`${name}=([^;]+)`);
+    const re = new RegExp(`${ name }=([^;]+)`);
     const match = re.exec(document.cookie);
     return match !== null ? match[1] : '';
 };
@@ -30,39 +29,24 @@ class TimeoutModal extends React.Component {
         console.log('props', props); // tslint:disable-line
         this.state = {
             skalVise: false,
-            timeOffset: 0
         };
     }
 
     componentDidMount() {
-        fetch('https://worldtimeapi.org/api/ip')
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            const nowlocal = new Date().getTime();
-            const nowreal = new Date(data.datetime).getTime();
-            const offset = nowlocal - nowreal;
-            this.setState({
-                timeOffset: offset
-            });
-        })
-        .catch(error => {
-            console.error(error); // tslint:disable-line
-        })
         fetch(
             '/api/auth',
             {
                 ...MED_CREDENTIALS,
                 headers: getHeaders(),
             })
-            .then((response) => {
+            .then(response => {
                 return response.json();
             })
-            .then((authExp) => {
-                const {expirationTime} = authExp;
+            .then(authExp => {
+                const { remainingSeconds } = authExp;
 
-                if (expirationTime) {
-                    const expirationInMillis = this.utloptTispunktMinusFemMinutter(expirationTime);
+                if (remainingSeconds) {
+                    const expirationInMillis = this.utloptTidspunktMinusFemMinutter(remainingSeconds);
                     // SetTimeout til å vise informasjon melding når sesjon er utløpt
                     setTimeout(() => {
                         this.setState({
@@ -75,10 +59,9 @@ class TimeoutModal extends React.Component {
                     // fungere. Bruker derfor mousedown event + sjekk om sesjonen er utløpt, og sørger for at meldingen
                     // vises med en gang bruker prøver å gjøre noe.
                     document.addEventListener('mousedown', () => {
-                        const nyExpirationInMillis = this.utloptTispunktMinusFemMinutter(expirationTime);
+                        const nyExpirationInMillis = this.utloptTidspunktMinusFemMinutter(remainingSeconds);
                         this.setState({
-                            skalVise: nyExpirationInMillis < 0,
-                            timeOffset: 0
+                            skalVise: nyExpirationInMillis < 0
                         });
                     });
                 }
@@ -88,11 +71,8 @@ class TimeoutModal extends React.Component {
             })
     }
 
-    utloptTispunktMinusFemMinutter(expirationTime) {
-        return moment(expirationTime).subtract(5, 'minutes').diff(
-            moment(),
-            'ms'
-        );
+    utloptTidspunktMinusFemMinutter(remainingSeconds) {
+        return (remainingSeconds - 300) * 1000;
     }
 
     render() {
@@ -130,7 +110,7 @@ class TimeoutModal extends React.Component {
                             Sesjonen din har utløpt
                         </Systemtittel>
                         <Normaltekst className="timeoutbox-modal__beskrivelse">
-                            {this.state.timeOffset > 300000 ? 'Klokken på datamaskinen din er feil. Du må stille den før du trykker "Start på nytt"' : 'Du må starte på nytt for å fortsette.'}
+                            Du må starte på nytt for å fortsette.
                         </Normaltekst>
                         <HovedKnapp
                             className="timeoutbox-modal__knapp"
