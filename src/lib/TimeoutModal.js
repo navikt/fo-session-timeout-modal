@@ -27,15 +27,13 @@ class TimeoutModal extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log('props', props); // tslint:disable-line
         this.state = {
             skalVise: false,
         };
     }
 
     componentDidMount() {
-        fetch(
-            '/api/auth',
+        fetch(this.props.authUrl || '/api/auth',
             {
                 ...MED_CREDENTIALS,
                 headers: getHeaders(),
