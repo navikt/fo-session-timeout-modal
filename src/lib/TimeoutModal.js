@@ -47,6 +47,7 @@ class TimeoutModal extends React.Component {
 
                 if (remainingSeconds) {
                     const expirationInMillis = this.utloptTidspunktMinusFemMinutter(remainingSeconds);
+                    const expiresAt = new Date().getTime() + expirationInMillis;
                     // SetTimeout til å vise informasjon melding når sesjon er utløpt
                     setTimeout(() => {
                         this.setState({
@@ -59,9 +60,9 @@ class TimeoutModal extends React.Component {
                     // fungere. Bruker derfor mousedown event + sjekk om sesjonen er utløpt, og sørger for at meldingen
                     // vises med en gang bruker prøver å gjøre noe.
                     document.addEventListener('mousedown', () => {
-                        const nyExpirationInMillis = this.utloptTidspunktMinusFemMinutter(remainingSeconds);
+                        const hasExpired = new Date().getTime() >= expiresAt;
                         this.setState({
-                            skalVise: nyExpirationInMillis <= 0
+                            skalVise: hasExpired
                         });
                     });
                 }
