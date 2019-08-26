@@ -1,12 +1,11 @@
 {
   "name": "@navikt/fo-session-timeout-modal",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "dependencies": {
     "classnames": "^2.2.6",
     "lodash.throttle": "^4.1.1",
-    "moment": "^2.24.0",
     "nav-frontend-core": "^4.0.9",
     "nav-frontend-js-utils": "^1.0.7",
     "nav-frontend-knapper": "^1.0.29",

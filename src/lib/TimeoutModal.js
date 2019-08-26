@@ -2,12 +2,11 @@ import React from 'react';
 import NavFrontendModal from 'nav-frontend-modal';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import HovedKnapp from 'nav-frontend-knapper/lib/hovedknapp';
-import {Normaltekst, Systemtittel} from 'nav-frontend-typografi';
-import moment from 'moment';
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import './TimeoutModal.css';
 
 export const getCookie = name => {
-    const re = new RegExp(`${name}=([^;]+)`);
+    const re = new RegExp(`${ name }=([^;]+)`);
     const match = re.exec(document.cookie);
     return match !== null ? match[1] : '';
 };
@@ -38,15 +37,15 @@ class TimeoutModal extends React.Component {
                 ...MED_CREDENTIALS,
                 headers: getHeaders(),
             })
-            .then((response) => {
+            .then(response => {
                 return response.json();
             })
-            .then((authExp) => {
-                const {expirationTime} = authExp;
+            .then(authExp => {
+                const { remainingSeconds } = authExp;
 
-                if (expirationTime) {
-                    const expirationInMillis = this.utloptTispunktMinusFemMinutter(expirationTime);
-
+                if (remainingSeconds) {
+                    const expirationInMillis = this.utloptTidspunktMinusFemMinutter(remainingSeconds);
+                    const expiresAt = new Date().getTime() + expirationInMillis;
                     // SetTimeout til å vise informasjon melding når sesjon er utløpt
                     setTimeout(() => {
                         this.setState({
@@ -59,9 +58,9 @@ class TimeoutModal extends React.Component {
                     // fungere. Bruker derfor mousedown event + sjekk om sesjonen er utløpt, og sørger for at meldingen
                     // vises med en gang bruker prøver å gjøre noe.
                     document.addEventListener('mousedown', () => {
-                        const nyExpirationInMillis = this.utloptTispunktMinusFemMinutter(expirationTime);
+                        const hasExpired = new Date().getTime() >= expiresAt;
                         this.setState({
-                            skalVise: nyExpirationInMillis < 0,
+                            skalVise: hasExpired
                         });
                     });
                 }
@@ -71,16 +70,12 @@ class TimeoutModal extends React.Component {
             })
     }
 
-    utloptTispunktMinusFemMinutter(expirationTime) {
-        return moment(expirationTime).subtract(5, 'minutes').diff(
-            moment(),
-            'ms'
-        );
+    utloptTidspunktMinusFemMinutter(remainingSeconds) {
+        return (remainingSeconds - 300) * 1000;
     }
 
     render() {
         const skalVise = this.state.skalVise || this.props.visDemo;
-
         return (
             <NavFrontendModal
                 isOpen={skalVise}
@@ -133,4 +128,4 @@ class TimeoutModal extends React.Component {
     }
 }
 
-export default TimeoutModal
+export default TimeoutModal;
