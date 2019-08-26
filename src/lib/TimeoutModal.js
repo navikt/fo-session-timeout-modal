@@ -61,7 +61,7 @@ class TimeoutModal extends React.Component {
                     document.addEventListener('mousedown', () => {
                         const nyExpirationInMillis = this.utloptTidspunktMinusFemMinutter(remainingSeconds);
                         this.setState({
-                            skalVise: nyExpirationInMillis < 0
+                            skalVise: nyExpirationInMillis <= 0
                         });
                     });
                 }
