@@ -65,8 +65,8 @@ class TimeoutModal extends React.Component {
                     });
                 }
             })
-            .catch((e) => {
-                console.log('catch', e); // tslint:disable-line
+            .catch((error) => {
+                console.error(error); // tslint:disable-line
             })
     }
 
