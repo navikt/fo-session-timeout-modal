@@ -57,7 +57,7 @@
     "@babel/preset-react": "7.10.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.1.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "repository": {
