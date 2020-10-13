@@ -1,7 +1,7 @@
 import React from 'react';
 import NavFrontendModal from 'nav-frontend-modal';
 import Veilederpanel from 'nav-frontend-veilederpanel';
-import HovedKnapp from 'nav-frontend-knapper/lib/hovedknapp';
+import { Hovedknapp } from 'nav-frontend-knapper';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import './TimeoutModal.css';
 
@@ -111,7 +111,7 @@ class TimeoutModal extends React.Component {
                         <Normaltekst className="timeoutbox-modal__beskrivelse">
                             Du må starte på nytt for å fortsette.
                         </Normaltekst>
-                        <HovedKnapp
+                        <Hovedknapp
                             className="timeoutbox-modal__knapp"
                             onClick={
                                 () => {
@@ -120,7 +120,7 @@ class TimeoutModal extends React.Component {
                             }
                         >
                             Start på nytt
-                        </HovedKnapp>
+                        </Hovedknapp>
                     </div>
                 </Veilederpanel>
             </NavFrontendModal>
