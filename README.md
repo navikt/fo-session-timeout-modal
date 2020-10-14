@@ -1,6 +1,6 @@
 ## Informasjonsmelding når sesjon utløper
 
-Brukes i NAV FO frontend applikasjoner for å vise informasjonsmelding 5 minutter før sesjon utløper.
+Modal for å vise informasjonsmelding 5 minutter før sesjon utløper.
 
 ### Installering
 
