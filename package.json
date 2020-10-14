@@ -60,7 +60,7 @@
     "react-dom": "16.13.1",
     "react-scripts": "3.2.0"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "Modal for å vise informasjonsmelding 5 minutter før sesjon utløper.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navikt/fo-session-timeout-modal.git"
