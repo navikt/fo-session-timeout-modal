@@ -1,5 +1,6 @@
 {
   "name": "@navikt/fo-session-timeout-modal",
+  "description": "Modal for å vise informasjonsmelding 5 minutter før sesjon utløper.",
   "version": "1.1.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -22,17 +23,37 @@
     "nav-frontend-veilederpanel": "0.1.32",
     "nav-frontend-veilederpanel-style": "0.0.32",
     "prop-types": "15.7.2",
-    "react-modal": "3.11.2"
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-modal": "3.11.2",
+    "react-scripts": "3.4.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.11.6",
+    "@babel/core": "7.11.6",
+    "@babel/preset-env": "7.11.5",
+    "@babel/preset-react": "7.10.4",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.3.2",
+    "@testing-library/user-event": "7.1.2",
+    "@types/react-modal": "3.10.6"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navikt/fo-session-timeout-modal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/navikt/fo-session-timeout-modal/issues"
   },
   "browserslist": {
     "production": [
@@ -45,30 +66,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "peerDependencies": {
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
-  },
-  "devDependencies": {
-    "@babel/cli": "7.11.6",
-    "@babel/core": "7.11.6",
-    "@babel/preset-env": "7.11.5",
-    "@babel/preset-react": "7.10.4",
-    "@types/react-modal": "3.10.6",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-scripts": "3.2.0"
-  },
-  "description": "Modal for å vise informasjonsmelding 5 minutter før sesjon utløper.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/navikt/fo-session-timeout-modal.git"
-  },
-  "author": "",
-  "license": "SEE LICENSE IN LICENSE",
-  "bugs": {
-    "url": "https://github.com/navikt/fo-session-timeout-modal/issues"
-  },
-  "homepage": "https://github.com/navikt/fo-session-timeout-modal#readme"
+  }
 }
