@@ -4,25 +4,25 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "dependencies": {
-    "classnames": "^2.2.6",
-    "lodash.throttle": "^4.1.1",
-    "nav-frontend-core": "^4.0.9",
-    "nav-frontend-js-utils": "^1.0.7",
-    "nav-frontend-knapper": "^1.0.29",
-    "nav-frontend-knapper-style": "^0.3.38",
-    "nav-frontend-lukknapp": "^1.0.21",
-    "nav-frontend-lukknapp-style": "^0.2.19",
-    "nav-frontend-modal": "^1.0.39",
-    "nav-frontend-modal-style": "^0.3.29",
-    "nav-frontend-paneler-style": "^0.3.15",
-    "nav-frontend-typografi": "^2.0.26",
-    "nav-frontend-typografi-style": "^1.0.13",
-    "nav-frontend-veileder": "^2.0.11",
-    "nav-frontend-veileder-style": "^2.0.8",
-    "nav-frontend-veilederpanel": "^0.1.29",
-    "nav-frontend-veilederpanel-style": "0.0.29",
-    "prop-types": "^15.7.2",
-    "react-modal": "^3.0.0 || ^3.8.1"
+    "classnames": "2.2.6",
+    "lodash.throttle": "4.1.1",
+    "nav-frontend-core": "5.0.5",
+    "nav-frontend-js-utils": "1.0.13",
+    "nav-frontend-knapper": "2.0.13",
+    "nav-frontend-knapper-style": "1.0.4",
+    "nav-frontend-lukknapp": "1.0.34",
+    "nav-frontend-lukknapp-style": "0.2.27",
+    "nav-frontend-modal": "1.0.45",
+    "nav-frontend-modal-style": "0.3.38",
+    "nav-frontend-paneler-style": "0.3.24",
+    "nav-frontend-typografi": "2.0.29",
+    "nav-frontend-typografi-style": "1.0.25",
+    "nav-frontend-veileder": "2.0.24",
+    "nav-frontend-veileder-style": "2.0.18",
+    "nav-frontend-veilederpanel": "0.1.32",
+    "nav-frontend-veilederpanel-style": "0.0.32",
+    "prop-types": "15.7.2",
+    "react-modal": "3.11.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -47,18 +47,18 @@
     ]
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^16.8.6",
-    "react-dom": "^16.0.0 || ^16.8.6"
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-modal": "^3.8.1",
-    "react-scripts": "3.0.1"
+    "@babel/cli": "7.11.6",
+    "@babel/core": "7.11.6",
+    "@babel/preset-env": "7.11.5",
+    "@babel/preset-react": "7.10.4",
+    "@types/react-modal": "3.10.6",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-scripts": "3.2.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "repository": {
